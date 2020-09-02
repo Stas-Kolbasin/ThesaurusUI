@@ -1,4 +1,4 @@
-<i>{{@model.description}}</i>
+({{lowercase @model.partOfSpeech}}) <i> {{@model.description}}</i>
 <br/>
 {{#each @model.synonyms as |synonym|}}
   <Synonym @model = {{synonym}}></Synonym>
