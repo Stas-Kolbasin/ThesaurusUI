@@ -1,7 +1,11 @@
-<h2> {{this.model.base}} </h2>
+<h2>{{this.model.base}}</h2>
 
-<ul>
-  {{this.model.meanings}}
-</ul>
+<ol>
+  {{#each this.model.meanings as |meaning|}}
+      <li>
+        <Meaning @model={{meaning}}></Meaning>
+      </li>
+  {{/each}}
+</ol>
 
 {{outlet}}
