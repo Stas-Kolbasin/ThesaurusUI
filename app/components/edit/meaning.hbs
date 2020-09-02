@@ -1,0 +1,13 @@
+<h3>Meaning</h3>
+
+<label>Description</label>
+<textarea value={{@model.description}}/>
+
+<label>Part of Speech</label>
+<input value={{@model.partOfSpeech}} type="text"/>
+
+<label>Synonyms</label>
+{{#each @model.synonyms as |synonym|}}
+  <Edit::Synonym @model={{synonym}}></Edit::Synonym>
+{{/each}}
+<button>+</button>

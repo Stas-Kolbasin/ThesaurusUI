@@ -1,0 +1,13 @@
+<h2>Save a word: <i>{{@model.base}}</i></h2>
+
+<label>Base</label>
+<input type="text" value={{@model.base}}/>
+
+{{#each @model.meanings as |meaning|}}
+  <Edit::Meaning @model={{meaning}}></Edit::Meaning>
+{{/each}}
+
+<br/>
+<button> + Meaning</button>
+<br/>
+<button>Save</button>
