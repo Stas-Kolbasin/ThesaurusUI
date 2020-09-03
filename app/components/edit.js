@@ -24,12 +24,14 @@ export default class EditComponent extends Component {
   constructor(owner, args) {
     super(owner, args);
 
-    this.model.base = args.model.base;
-    if(!!args.model.meanings) {
-      args.model.meanings.forEach(
-        meaning =>
-          this.model.meanings.pushObject(this.meaningToTracked(meaning))
-      );
+    if (!!args.model) {
+      this.model.base = args.model.base;
+      if (!!args.model.meanings) {
+        args.model.meanings.forEach(
+          meaning =>
+            this.model.meanings.pushObject(this.meaningToTracked(meaning))
+        );
+      }
     }
   }
 
@@ -37,6 +39,7 @@ export default class EditComponent extends Component {
 
   async getMyJson(){
     let poco = {};
+
     poco.base = this.model.base;
     poco.meanings = [];
     if (!!this.model.meanings)

@@ -6,10 +6,7 @@ export default class EditRoute extends Route {
       base
     } = params;
 
-    if (!!base) {
-      const response = await fetch("https://localhost:5001/word/" + base);
-      return await response.json();
-    }
-    return {};
+    const response = await fetch("https://localhost:5001/word/" + base);
+    return await response.json();
   }
 }

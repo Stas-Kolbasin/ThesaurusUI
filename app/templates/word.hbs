@@ -1,5 +1,7 @@
 <h2>{{this.model.base}}</h2>
 
+<LinkTo @route="edit" @model="{{this.model.base}}">[edit]</LinkTo>
+
 <ol>
   {{#each this.model.meanings as |meaning|}}
       <li>
