@@ -11,12 +11,13 @@ class Word {
 class Meaning {
   @tracked description;
   @tracked partOfSpeech;
-  @tracked synonyms = A([]);
+  @tracked synonyms;
 }
 
+/*
 class Synonym {
   @tracked base;
-}
+}*/
 
 export default class EditComponent extends Component {
 
@@ -54,13 +55,16 @@ export default class EditComponent extends Component {
     pocoMeaning.partOfSpeech = meaning.partOfSpeech;
 
     pocoMeaning.synonyms = [];
-    meaning.synonyms.forEach(
-      synonym => {
-        let pocoSynonym = {};
-        pocoSynonym.base = synonym.base;
-        pocoMeaning.synonyms.push(pocoSynonym);
-      }
-    )
+    meaning.synonyms
+      .trim()
+      .split(' ')
+      .forEach(
+        synonym => {
+          let pocoSynonym = {};
+          pocoSynonym.base = synonym;
+          pocoMeaning.synonyms.push(pocoSynonym);
+        }
+      );
 
     return pocoMeaning;
   }
@@ -70,13 +74,11 @@ export default class EditComponent extends Component {
     trackedMeaning.description = meaning.description;
     trackedMeaning.partOfSpeech = meaning.partOfSpeech;
 
-    meaning.synonyms.forEach(
-      synonym => {
-        let trackedSynonym = new Synonym();
-        trackedSynonym.base = synonym.base;
-        trackedMeaning.synonyms.pushObject(trackedSynonym);
-      }
-    )
+    trackedMeaning.synonyms =
+      meaning.synonyms.reduce(
+        (sum, synonym) => sum + synonym.base + ' ',
+        ''
+      );
 
     return trackedMeaning;
   }
