@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import ENV from 'thesaurus-ui/config/environment';
 
 export default class EditRoute extends Route {
   async model(params) {
@@ -6,7 +7,7 @@ export default class EditRoute extends Route {
       base
     } = params;
 
-    const response = await fetch("https://localhost:5001/word/" + base);
+    const response = await fetch(ENV.apiBaseUrl + 'word/' + base);
     return await response.json();
   }
 }

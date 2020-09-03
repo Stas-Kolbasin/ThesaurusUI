@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import {tracked} from "@glimmer/tracking";
 import { action } from '@ember/object';
 import { A } from '@ember/array';
+import ENV from 'thesaurus-ui/config/environment';
 
 class Word {
   @tracked base;
@@ -101,7 +102,7 @@ export default class EditComponent extends Component {
   async save() {
     let json = await this.getMyJson();
     await fetch(
-      "https://localhost:5001/word/",
+      ENV.apiBaseUrl + 'word/',
       {
         method: 'POST',
         headers: {
