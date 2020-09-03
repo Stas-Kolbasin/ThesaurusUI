@@ -24,10 +24,12 @@ export default class EditComponent extends Component {
     super(owner, args);
 
     this.model.base = args.model.base;
-    args.model.meanings.forEach(
-      meaning =>
-        this.model.meanings.pushObject(this.meaningToTracked(meaning))
-    );
+    if(!!args.model.meanings) {
+      args.model.meanings.forEach(
+        meaning =>
+          this.model.meanings.pushObject(this.meaningToTracked(meaning))
+      );
+    }
   }
 
   @tracked model = new Word();
@@ -36,10 +38,13 @@ export default class EditComponent extends Component {
     let poco = {};
     poco.base = this.model.base;
     poco.meanings = [];
-    this.model.meanings.forEach(
-      meaning =>
-        poco.meanings.push(this.meaningToPoco(meaning))
-    );
+    if (!!this.model.meanings)
+    {
+      this.model.meanings.forEach(
+        meaning =>
+          poco.meanings.push(this.meaningToPoco(meaning))
+      );
+    }
     return JSON.stringify(poco);
   }
 
@@ -80,6 +85,11 @@ export default class EditComponent extends Component {
   async showMe() {
     let json = await this.getMyJson();
     alert(json);
+  }
+
+  @action
+  async addMeaning() {
+    this.model.meanings.pushObject(new Meaning());
   }
 
   @action
