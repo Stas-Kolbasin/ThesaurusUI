@@ -5,7 +5,10 @@ export default class WordRoute extends Route {
     const {
       base
     } = params;
+
     const response = await fetch("https://localhost:5001/word/" + base);
-    return await response.json();
+    if (response.ok)
+      return await response.json();
+    return null;
   }
 }

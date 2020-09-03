@@ -1,13 +1,21 @@
-<h2>{{this.model.base}}</h2>
+{{#if this.model}}
 
-<LinkTo @route="edit" @model="{{this.model.base}}">[edit]</LinkTo>
+  <h2>{{this.model.base}}</h2>
 
-<ol>
-  {{#each this.model.meanings as |meaning|}}
-      <li>
-        <Meaning @model={{meaning}}></Meaning>
-      </li>
-  {{/each}}
-</ol>
+  <LinkTo @route="edit" @model="{{this.model.base}}">[edit]</LinkTo>
+
+  <ol>
+    {{#each this.model.meanings as |meaning|}}
+        <li>
+          <Meaning @model={{meaning}}></Meaning>
+        </li>
+    {{/each}}
+  </ol>
+
+{{else}}
+
+  Oops, could not find this word.
+
+{{/if}}
 
 {{outlet}}
