@@ -1,0 +1,18 @@
+<h3>Meaning</h3>
+
+<label>Description</label>
+<Textarea @value={{@model.description}}/>
+
+<label>Part of Speech</label>
+<Input @value={{@model.partOfSpeech}}/>
+
+<label>Synonyms</label>
+<Textarea @value={{@model.synonyms}}/>
+
+<!-- Somehow tracing arrays two levels down didn't work -->
+<!--
+{{#each @model.synonyms as |synonym|}}
+  <Edit::Synonym @model={{synonym}}></Edit::Synonym>
+{{/each}}
+<button>+</button>
+-->
