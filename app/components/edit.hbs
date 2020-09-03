@@ -1,13 +1,15 @@
-<h2>Save a word: <i>{{@model.base}}</i></h2>
+<h2>Save a word: <i>{{model.base}}</i></h2>
+
+<button {{on "click" this.showMe}}>Show Me What You Got</button>
 
 <label>Base</label>
-<input type="text" value={{@model.base}}/>
+<Input @value={{model.base}}/>
 
-{{#each @model.meanings as |meaning|}}
+{{#each this.model.meanings as |meaning|}}
   <Edit::Meaning @model={{meaning}}></Edit::Meaning>
 {{/each}}
 
 <br/>
 <button> + Meaning</button>
 <br/>
-<button {{on "click" (fn this.save @model)}}>Save</button>
+<button {{on "click" this.save}}>Save</button>
