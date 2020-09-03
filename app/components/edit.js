@@ -101,7 +101,7 @@ export default class EditComponent extends Component {
   @action
   async save() {
     let json = await this.getMyJson();
-    await fetch(
+    let response = await fetch(
       ENV.apiBaseUrl + 'word/',
       {
         method: 'POST',
@@ -111,6 +111,12 @@ export default class EditComponent extends Component {
         body: json
       }
     );
+    if (response.ok) {
+      alert('Saved successfully.');
+    }
+    else {
+      alert('Something went wrong. Try again or contact us!');
+    }
   }
 
 }
