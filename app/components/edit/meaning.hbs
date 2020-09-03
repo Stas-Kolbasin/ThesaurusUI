@@ -1,10 +1,10 @@
 <h3>Meaning</h3>
 
 <label>Description</label>
-<textarea value={{@model.description}}/>
+<Textarea @value={{@model.description}}/>
 
 <label>Part of Speech</label>
-<input value={{@model.partOfSpeech}} type="text"/>
+<Input @value={{@model.partOfSpeech}}/>
 
 <label>Synonyms</label>
 {{#each @model.synonyms as |synonym|}}

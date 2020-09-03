@@ -5,7 +5,7 @@
 <label>Base</label>
 <Input @value={{model.base}}/>
 
-{{#each this.model.meanings as |meaning|}}
+{{#each model.meanings as |meaning|}}
   <Edit::Meaning @model={{meaning}}></Edit::Meaning>
 {{/each}}
 
