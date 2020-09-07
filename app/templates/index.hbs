@@ -1,7 +1,9 @@
 <h2>Words that are currently available:</h2>
 
 {{#each this.model as |word|}}
+{{#if word}}
   <LinkTo @route="word" @model="{{word}}">{{word}}</LinkTo>
+{{/if}}
 {{/each}}
 
 {{outlet}}
